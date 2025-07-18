@@ -8,7 +8,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Para rolagem suave nos links de âncora */
 }
 
 body {
@@ -19,9 +19,9 @@ body {
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px; /* Largura máxima para o conteúdo em desktop */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 0 20px; /* Preenchimento nas laterais */
 }
 
 img {
@@ -34,13 +34,10 @@ img {
 
 /* Header e Navegação */
 header {
-    background-color: #0a4d68;
+    background-color: #0a4d68; /* Azul escuro */
     color: #fff;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 header .container {
@@ -49,26 +46,14 @@ header .container {
     align-items: center;
 }
 
-.logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #fff;
-}
-
-.logo-img {
-    height: 50px;
-    margin-right: 15px;
-}
-
-.logo-text {
-    font-size: 1.5em;
+.logo {
+    font-size: 2em;
     font-weight: bold;
 }
 
 .main-nav ul {
     list-style: none;
-    display: flex;
+    display: flex; /* Itens do menu lado a lado no desktop */
 }
 
 .main-nav ul li {
@@ -84,150 +69,61 @@ header .container {
 }
 
 .main-nav ul li a:hover {
-    color: #ffd700;
+    color: #ffd700; /* Amarelo dourado no hover */
 }
 
+/* Botão de menu hambúrguer escondido por padrão em desktop */
 .nav-toggle {
     display: none;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 2em;
-    cursor: pointer;
-}
-
-/* Carrossel */
-.hero {
-    padding: 0;
-    position: relative;
-    height: 500px; /* Você pode ajustar a altura do carrossel aqui */
-    overflow: hidden;
-    background-color: #e0e0e0; /* Cor de fundo enquanto as imagens carregam */
-}
-
-.carousel-container {
-    height: 100%;
-    width: 100%;
-}
-
-.carousel-slide {
-    display: flex;
-    height: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    min-width: 100%;
-    height: 100%;
-    display: none;
-    background-size: cover;
-    background-position: center;
-}
-
-.carousel-item.active {
-    display: block; /* Alterado de flex para block */
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* ESSENCIAL: Garante que a imagem cubra o espaço sem distorcer */
-    display: block;
-}
-
-.carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    z-index: 100;
-    border-radius: 5px;
-}
-
-.carousel-control.prev {
-    left: 15px;
-}
-
-.carousel-control.next {
-    right: 15px;
 }
 
 /* Seções de Conteúdo */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1500x800/22668D/FFFFFF?text=Foto+da+Igreja') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 500px;
+}
+
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
 .section-padding {
     padding: 60px 0;
+    text-align: center;
 }
 
 .section-padding:nth-of-type(odd) {
-    background-color: #fff;
+    background-color: #e0e0e0; /* Fundo cinza claro para seções alternadas */
 }
 
 .section-padding h2 {
-    text-align: center;
     font-size: 2.5em;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: #0a4d68;
 }
-
-/* Eventos */
-.eventos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.evento-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.evento-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-
-.evento-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.evento-card h3 {
-    font-size: 1.5em;
-    color: #0a4d68;
-    margin: 20px 20px 10px;
-}
-
-.evento-card .evento-data {
-    font-weight: bold;
-    color: #555;
-    margin: 0 20px 10px;
-}
-
-.evento-card p {
-    margin: 0 20px 20px;
-}
-
 
 /* Botões */
 .btn {
     display: inline-block;
-    background-color: #ffd700;
+    background-color: #ffd700; /* Amarelo dourado */
     color: #0a4d68;
     padding: 12px 25px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    border: none;
 }
 
 .btn:hover {
@@ -237,7 +133,7 @@ header .container {
 /* Mapa */
 .map-container {
     margin: 30px auto;
-    max-width: 800px;
+    max-width: 800px; /* Limita a largura do mapa */
     height: 450px;
     overflow: hidden;
     border-radius: 8px;
@@ -265,7 +161,7 @@ header .container {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
-    width: 100%;
+    width: 100%; /* Ocupa a largura total do contêiner */
 }
 
 .contact-form input:focus,
@@ -276,9 +172,6 @@ header .container {
 }
 
 /* Links Sociais */
-.social-links {
-    text-align: center;
-}
 .social-links a {
     display: inline-block;
     margin: 0 10px;
@@ -292,35 +185,6 @@ header .container {
     color: #ffd700;
 }
 
-/* Ícone Flutuante do WhatsApp */
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 30px;
-    background-color: #25D366; /* Cor oficial do WhatsApp */
-    border-radius: 50%;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1001; /* Garante que fique acima de outros elementos */
-    transition: transform 0.2s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: pulse 2s infinite;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
-}
-
-.whatsapp-icon {
-    width: 32px;
-    height: 32px;
-    fill: #FFFFFF; /* Cor do ícone (branco) */
-}
-
-
 /* Footer */
 footer {
     background-color: #222;
@@ -330,62 +194,102 @@ footer {
     font-size: 0.9em;
 }
 
-/* --- MEDIA QUERIES PARA MOBILE --- */
+/* --- MEDIA QUERIES PARA MOBILE (SOBRESCRITA DE ESTILOS) --- */
 
+/* Aplicar estilos para telas menores que 768px (tablets e celulares) */
 @media (max-width: 768px) {
     .container {
-        padding: 0 15px;
+        padding: 0 15px; /* Mais preenchimento nas laterais para mobile */
     }
 
-    .logo-text {
-        font-size: 1.2em;
+    /* Header e Navegação */
+    header .container {
+        flex-direction: column; /* Logo e nav empilhados */
+        align-items: flex-start; /* Alinha à esquerda */
+    }
+
+    .logo {
+        margin-bottom: 15px;
+        font-size: 1.8em;
     }
 
     .main-nav {
-        order: 3;
-        width: 100%;
+        width: 100%; /* Ocupa a largura total */
     }
 
     .main-nav ul {
-        display: none;
-        flex-direction: column;
+        flex-direction: column; /* Itens do menu empilhados */
+        align-items: center; /* Centraliza os itens */
+        max-height: 0; /* Esconde o menu por padrão */
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background-color: rgba(10, 77, 104, 0.9); /* Fundo para o menu aberto */
         width: 100%;
-        background-color: rgba(10, 77, 104, 0.95);
-        position: absolute;
-        top: 80px; /* Altura do header */
-        left: 0;
         padding: 10px 0;
     }
 
     .main-nav ul.active {
-        display: flex;
+        max-height: 300px; /* Altura para mostrar o menu */
     }
 
     .main-nav ul li {
         margin: 10px 0;
+        width: 100%;
         text-align: center;
     }
 
+    .main-nav ul li a {
+        padding: 10px 0;
+        display: block; /* Para que o link ocupe toda a largura */
+    }
+
+    /* Mostra o botão de hambúrguer */
     .nav-toggle {
         display: block;
-        position: absolute;
-        top: 25px;
-        right: 20px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2em;
+        cursor: pointer;
+        position: absolute; /* Posiciona no canto superior direito */
+        top: 15px;
+        right: 15px;
+        z-index: 10; /* Garante que fique por cima */
     }
-}
 
-/* Animação Pulsante para o WhatsApp */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    /* Seções */
+    .hero {
+        padding: 80px 15px;
+        min-height: 400px;
     }
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+
+    .hero h2 {
+        font-size: 2.2em;
     }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .section-padding h2 {
+        font-size: 1.8em;
+    }
+
+    .map-container {
+        height: 300px; /* Altura menor para o mapa em mobile */
+        margin: 20px auto;
+    }
+
+    .contact-form {
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
     }
 }
