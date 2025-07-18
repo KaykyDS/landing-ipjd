@@ -1,0 +1,295 @@
+/* style.css */
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Para rolagem suave nos links de âncora */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px; /* Largura máxima para o conteúdo em desktop */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 0 20px; /* Preenchimento nas laterais */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- ESTILOS PARA DESKTOP (PADRÃO) --- */
+
+/* Header e Navegação */
+header {
+    background-color: #0a4d68; /* Azul escuro */
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex; /* Itens do menu lado a lado no desktop */
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: #ffd700; /* Amarelo dourado no hover */
+}
+
+/* Botão de menu hambúrguer escondido por padrão em desktop */
+.nav-toggle {
+    display: none;
+}
+
+/* Seções de Conteúdo */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1500x800/22668D/FFFFFF?text=Foto+da+Igreja') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 500px;
+}
+
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.section-padding {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.section-padding:nth-of-type(odd) {
+    background-color: #e0e0e0; /* Fundo cinza claro para seções alternadas */
+}
+
+.section-padding h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #0a4d68;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    background-color: #ffd700; /* Amarelo dourado */
+    color: #0a4d68;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffc107;
+}
+
+/* Mapa */
+.map-container {
+    margin: 30px auto;
+    max-width: 800px; /* Limita a largura do mapa */
+    height: 450px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Formulário de Contato */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%; /* Ocupa a largura total do contêiner */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #0a4d68;
+    box-shadow: 0 0 0 2px rgba(10, 77, 104, 0.2);
+}
+
+/* Links Sociais */
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #0a4d68;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ffd700;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* --- MEDIA QUERIES PARA MOBILE (SOBRESCRITA DE ESTILOS) --- */
+
+/* Aplicar estilos para telas menores que 768px (tablets e celulares) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px; /* Mais preenchimento nas laterais para mobile */
+    }
+
+    /* Header e Navegação */
+    header .container {
+        flex-direction: column; /* Logo e nav empilhados */
+        align-items: flex-start; /* Alinha à esquerda */
+    }
+
+    .logo {
+        margin-bottom: 15px;
+        font-size: 1.8em;
+    }
+
+    .main-nav {
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Itens do menu empilhados */
+        align-items: center; /* Centraliza os itens */
+        max-height: 0; /* Esconde o menu por padrão */
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background-color: rgba(10, 77, 104, 0.9); /* Fundo para o menu aberto */
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .main-nav ul.active {
+        max-height: 300px; /* Altura para mostrar o menu */
+    }
+
+    .main-nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav ul li a {
+        padding: 10px 0;
+        display: block; /* Para que o link ocupe toda a largura */
+    }
+
+    /* Mostra o botão de hambúrguer */
+    .nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2em;
+        cursor: pointer;
+        position: absolute; /* Posiciona no canto superior direito */
+        top: 15px;
+        right: 15px;
+        z-index: 10; /* Garante que fique por cima */
+    }
+
+    /* Seções */
+    .hero {
+        padding: 80px 15px;
+        min-height: 400px;
+    }
+
+    .hero h2 {
+        font-size: 2.2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .section-padding h2 {
+        font-size: 1.8em;
+    }
+
+    .map-container {
+        height: 300px; /* Altura menor para o mapa em mobile */
+        margin: 20px auto;
+    }
+
+    .contact-form {
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
