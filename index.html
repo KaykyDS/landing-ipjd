@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
+    <link rel="shortcut icon" href="img/logo_semfundoicone.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,7 +27,10 @@
                 </ul>
             </nav>
             <button class="nav-toggle" aria-label="Abrir menu">
-                &#9776; </button>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
         </div>
     </header>
 
@@ -36,42 +39,42 @@
             <div class="carousel-container">
                 <div class="carousel-slide">
                     <div class="carousel-item active">
-                        <img src="img/BACKGROUND_MEDIO.jpg" alt="Culto na igreja">
+                        <img src="img/1.png" alt="Culto na igreja">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/BACKGROUND_SITE3.jpg" alt="Altar da igreja">
+                        <img src="img/2.png" alt="Altar da igreja">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/frente.jpg" alt="Grupo musical da igreja">
+                        <img src="img/3.jpg" alt="Frente da igreja">
                     </div>
                 </div>
-                <button class="carousel-control prev" aria-label="Slide anterior">&#8249;</button>
-                <button class="carousel-control next" aria-label="Próximo slide">&#8250;</button>
+                <button class="carousel-control prev" aria-label="Slide anterior">‹</button>
+                <button class="carousel-control next" aria-label="Próximo slide">›</button>
             </div>
        </section>
 
         <section id="eventos" class="section-padding">
             <div class="container">
-                <h2>Próximos Eventos</h2>
+                <h2 class="animate-on-scroll">Próximos Eventos</h2>
                 <div class="eventos-grid">
-                    <div class="evento-card">
-                        <img src="https://via.placeholder.com/400x250/087E8B/FFFFFF?text=Vigília" alt="Imagem do Evento 1">
+                    <div class="evento-card animate-on-scroll">
+                        <img src="img/aniversario.png" alt="Imagem do Evento 1">
                         <div class="card-content">
-                            <h3>Vigília de Oração</h3>
+                            <h3>Aniversário da Igreja</h3>
                             <p class="evento-data">25 de Julho de 2025, às 22:00</p>
                             <p>Uma noite inteira de clamor e adoração. Venha buscar a face do Senhor conosco.</p>
                         </div>
                     </div>
-                    <div class="evento-card">
-                        <img src="https://via.placeholder.com/400x250/087E8B/FFFFFF?text=Festa" alt="Imagem do Evento 2">
+                    <div class="evento-card animate-on-scroll">
+                        <img src="img/batismo.png" alt="Imagem do Evento 2">
                         <div class="card-content">
-                            <h3>Festa da Colheita</h3>
+                            <h3>Batismo</h3>
                             <p class="evento-data">17 de Agosto de 2025, às 18:00</p>
                             <p>Celebraremos com louvores e um delicioso jantar em gratidão a Deus por mais um ano de bênçãos.</p>
                         </div>
                     </div>
-                    <div class="evento-card">
-                        <img src="https://via.placeholder.com/400x250/087E8B/FFFFFF?text=Congresso" alt="Imagem do Evento 3">
+                    <div class="evento-card animate-on-scroll">
+                        <img src="img/cultojovens.png" alt="Imagem do Evento 3">
                         <div class="card-content">
                             <h3>Congresso de Jovens</h3>
                             <p class="evento-data">12 a 14 de Setembro de 2025</p>
@@ -82,21 +85,31 @@
             </div>
         </section>
 
+        <section id="versiculo" class="section-padding">
+            <div class="container">
+                <div class="versiculo-content animate-on-scroll">
+                    <p class="versiculo-texto">"Consagre ao Senhor
+                        tudo o que você faz,
+                        e os seus planos serão bem-sucedidos."</p>
+                    <p class="versiculo-referencia">Provérbios 16:3</p>
+                </div>
+            </div>
+        </section>
+
         <section id="localizacao" class="section-padding bg-light">
             <div class="container">
-                <h2>Onde nos Encontrar</h2>
-                <p>Rua Exemplo, 123, Bairro Centro, Guarulhos - SP</p>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.878207981504!2d-46.5332213237728!3d-23.463371978931165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce8b23f5b72223%3A0x6b77e8a9f5d1b7d5!2sGuarulhos%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1704067200000!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h2 class="animate-on-scroll">Onde nos Encontrar</h2>
+                <p class="animate-on-scroll">Rua Descoberto, 87, Vila Nova Bonsucesso, Guarulhos - SP</p>
+                <div class="map-container animate-on-scroll">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2827.1026072767236!2d-46.3892191!3d-23.409633000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce8982570f785f%3A0x8326d4beb43f8a91!2sIgreja%20Pentecostal%20Jardim%20De%20Deus!5e1!3m2!1spt-BR!2sbr!4v1753121642396!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <p><strong>Horários dos Cultos:</strong> Domingos às 10h e Quartas às 19h.</p>
             </div>
         </section>
 
         <section id="contato" class="section-padding">
             <div class="container">
-                <h2>Faça um pedido de oração</h2>
-                <form action="https://formspree.io/f/mdkdkwoo" method="POST" class="contact-form">
+                <h2 class="animate-on-scroll">Faça um pedido de oração</h2>
+                <form action="https://formspree.io/f/mdkdkwoo" method="POST" class="contact-form animate-on-scroll">
                     <label for="name">Nome:</label>
                     <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
                     
@@ -108,7 +121,7 @@
                     
                     <button type="submit" class="btn">Enviar Pedido</button>
                 </form>
-                <div class="contact-info">
+                <div class="contact-info animate-on-scroll">
                     <p>Ou se preferir, entre em contato:</p>
                     <p><strong>Telefone:</strong> (11) 98765-4321</p>
                     <div class="social-links">
@@ -122,7 +135,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Igreja Pentecostal Jardim de Deus. Todos os direitos reservados.</p>
+            <p>© 2025 Igreja Pentecostal Jardim de Deus. Todos os direitos reservados.</p>
         </div>
     </footer>
     

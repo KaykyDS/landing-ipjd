@@ -52,6 +52,13 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+        transition: padding 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transição suave */
+}
+
+header.scrolled {
+    padding: 10px 0;
+    background-color: rgba(8, 126, 139, 0.95); /* Azul com leve transparência */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 header .container {
@@ -79,14 +86,40 @@ header .container {
 }
 
 .nav-toggle {
-    display: block; /* Visível no mobile */
+    display: block;
     background: none;
     border: none;
-    color: var(--cor-cabecalho);
-    font-size: 1.8em;
     cursor: pointer;
     z-index: 1001;
+    width: 30px;
+    height: 22px;
+    position: relative;
 }
+
+.line {
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: var(--cor-cabecalho);
+    border-radius: 2px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.line-1 { top: 0; }
+.line-2 { top: 50%; transform: translateY(-50%); }
+.line-3 { bottom: 0; }
+
+/* Animação do ícone para "X" */
+.nav-toggle.active .line-1 {
+    transform: translateY(9.5px) rotate(45deg);
+}
+.nav-toggle.active .line-2 {
+    opacity: 0;
+}
+.nav-toggle.active .line-3 {
+    transform: translateY(-9.5px) rotate(-45deg);
+}
+
 
 .main-nav {
     display: none; /* Escondido por padrão no mobile */
@@ -159,22 +192,8 @@ header .container {
 }
 
 .carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    border: none;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    z-index: 100;
-    border-radius: var(--raio-borda);
-    transition: background-color 0.3s;
+    display: none; /* ESCONDE OS BOTÕES EM TODAS AS RESOLUÇÕES */
 }
-.carousel-control:hover { background-color: rgba(0, 0, 0, 0.7); }
-.carousel-control.prev { left: 15px; }
-.carousel-control.next { right: 15px; }
 
 /* 4. SEÇÕES DE CONTEÚDO */
 .section-padding {
@@ -297,7 +316,33 @@ h2 {
 }
 .social-links a:hover { color: var(--cor-secundaria); }
 
-/* 8. WHATSAPP E FOOTER */
+/* 8. SEÇÃO VERSÍCULO DO DIA (ADICIONADO ANTERIORMENTE) */
+#versiculo {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(kaykyds/landing-ipjd/landing-ipjd-b976c65725ece60031dc18ea26e9080c9c36f6c9/img/passagem_biblia.jpg) no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Cria o efeito de paralaxe */
+    color: #FFFFFF;
+    text-align: center;
+    padding: 100px 0; /* Mais preenchimento para dar destaque */
+}
+
+.versiculo-texto {
+    font-family: var(--fonte-titulo);
+    font-size: 2.2em;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para legibilidade */
+}
+
+.versiculo-referencia {
+    font-size: 1.2em;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+
+/* 9. WHATSAPP E FOOTER */
 .whatsapp-float {
     position: fixed;
     width: 55px;
@@ -324,7 +369,26 @@ footer {
     font-size: 0.9em;
 }
 
-/* 9. MEDIA QUERIES PARA DESKTOP (A PARTIR DE 768px) */
+/* ---------------------------------- */
+/* ANIMAÇÕES                          */
+/* ---------------------------------- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: 0.2s; /* Pequeno atraso para um efeito mais escalonado */
+}
+
+p.animate-on-scroll.is-visible{
+    text-align: center;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 10. MEDIA QUERIES PARA DESKTOP (A PARTIR DE 768px) */
 @media (min-width: 768px) {
     .logo-text { font-size: 1.2rem; }
     
@@ -358,4 +422,6 @@ footer {
     .eventos-grid {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
+
+    /* A regra para esconder os botões foi movida para fora da media query */
 }
