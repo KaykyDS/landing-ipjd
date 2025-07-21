@@ -9,25 +9,66 @@
 <body>
     <header>
         <div class="container">
-            <h1 class="logo">Igreja Pentecostal Jardim de Deus</h1>
+            <a href="#home" class="logo-link">
+                <img src="img/logo_semfundo.png" alt="Logo da Igreja" class="logo-img">
+                <h1 class="logo-text">Igreja Pentecostal Jardim de Deus</h1>
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
                     <li><a href="#localizacao">Localização</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
-            <button class="nav-toggle" aria-label="Abrir menu" style="display: none;">
-                &#9776; </button>
+            <button class="nav-toggle" aria-label="Abrir menu">
+                ☰
+            </button>
         </div>
     </header>
 
     <main>
-        <section id="home" class="hero">
+       <section id="home" class="hero">
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <div class="carousel-item active">
+                <img src="img/BACKGROUND_MEDIO.jpg" alt="Descrição da imagem 1 para acessibilidade">
+            </div>
+            <div class="carousel-item">
+                <img src="img/BACKGROUND_SITE3.jpg" alt="Descrição da imagem 2 para acessibilidade">
+            </div>
+            <div class="carousel-item">
+                <img src="img/GRUPO_MUSICAL.jpg" alt="Descrição da imagem 3 para acessibilidade">
+            </div>
+        </div>
+        <button class="carousel-control prev">‹</button>
+        <button class="carousel-control next">›</button>
+    </div>
+</section>
+
+        <section id="eventos" class="section-padding">
             <div class="container">
-                <h2>Seja bem-vindo(a) à Igreja Pentecostal Jardim de Deus no Brasil!</h2>
-                <p>"O hospital das almas feridas"</p>
-                <a href="#contato" class="btn">Peça uma oração</a>
+                <h2>Próximos Eventos</h2>
+                <div class="eventos-grid">
+                    <div class="evento-card">
+                        <img src="https://via.placeholder.com/400x250/0a4d68/FFFFFF?text=Evento+1" alt="Imagem do Evento 1">
+                        <h3>Vigília de Oração</h3>
+                        <p class="evento-data">25 de Julho de 2025, às 22:00</p>
+                        <p>Uma noite inteira de clamor e adoração. Venha buscar a face do Senhor conosco.</p>
+                    </div>
+                    <div class="evento-card">
+                        <img src="https://via.placeholder.com/400x250/0a4d68/FFFFFF?text=Evento+2" alt="Imagem do Evento 2">
+                        <h3>Festa da Colheita</h3>
+                        <p class="evento-data">17 de Agosto de 2025, às 18:00</p>
+                        <p>Celebraremos com louvores e um delicioso jantar em gratidão a Deus por mais um ano de bênçãos.</p>
+                    </div>
+                    <div class="evento-card">
+                        <img src="https://via.placeholder.com/400x250/0a4d68/FFFFFF?text=Evento+3" alt="Imagem do Evento 3">
+                        <h3>Congresso de Jovens</h3>
+                        <p class="evento-data">12 a 14 de Setembro de 2025</p>
+                        <p>Um final de semana de renovo espiritual e comunhão para a juventude da nossa igreja.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -44,13 +85,22 @@
 
         <section id="contato" class="section-padding">
             <div class="container">
-                <h2>Fale Conosco</h2>
-                <form class="contact-form">
-                    <input type="text" placeholder="Seu Nome" required>
-                    <input type="email" placeholder="Seu E-mail" required>
-                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
-                    <button type="submit" class="btn">Enviar Mensagem</button>
-                </form>
+                <h2>Faça um pedido de oração</h2>
+                <form action="https://formspree.io/f/mdkdkwoo" method="POST" class="contact-form">
+                <label>
+                    Nome:
+                    <input type="text" name="name" placeholder="Seu Nome" required>
+                </label>
+                <label>
+                    E-mail:
+                    <input type="email" name="email" placeholder="Seu E-mail" required>
+                </label>
+                <label>
+                    Mensagem:
+                    <textarea name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
+                </label>
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
                 <p>Ou ligue para: (11) 98765-4321</p>
                 <div class="social-links">
                     <a href="#" target="_blank">Facebook</a>
@@ -62,10 +112,14 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Nome da Igreja. Todos os direitos reservados.</p>
+            <p>© 2025 Nome da Igreja. Todos os direitos reservados.</p>
         </div>
     </footer>
-
+    <a href="https://wa.me/5511981874751?text=Olá!%20Gostaria%20de%20pedir%20uma%20oração." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale Conosco pelo WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="whatsapp-icon">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 439.6c-38.2 0-73.7-11.8-103.6-32.5l-7.4-4.4-77.1 20.2 20.6-75.1-4.8-7.7c-22.4-35.8-34.5-77.4-34.5-121.4 0-108.8 88.5-197.3 197.3-197.3 52.9 0 101.3 20.8 139.4 58.9 38.1 38.1 58.9 86.5 58.9 139.4-.1 108.8-88.6 197.3-197.4 197.3zm129.7-151.8c-7.2-3.6-42.6-21-49.2-23.4s-11.4-3.6-16.2 3.6c-4.8 7.2-18.6 23.4-22.8 28.2-4.2 4.8-8.4 5.4-15.6 1.8-7.2-3.6-30.3-11.2-57.7-35.7-21.3-19-35.7-42.6-39.9-49.8-4.2-7.2-.4-11.1 3.2-14.7 3.2-3.2 7.2-8.4 10.8-12.6 3.6-4.2 4.8-7.2 7.2-12s-1.8-12-3.6-16.2c-1.8-4.2-16.2-39-22.2-53.4-5.4-13.8-10.8-12-15.6-12s-8.4-.6-12.6-.6h-3.6c-4.2 0-11.4 1.8-17.4 8.4-6 6.6-23.4 22.8-23.4 55.8 0 33 24 64.8 27 69.6 3 4.8 46.2 70.8 112.2 98.4 15.6 6.6 28.2 10.2 37.8 13.2 16.8 5.4 32.4 4.8 44.4 2.8s39-16.2 44.4-31.8c5.4-16.2 5.4-29.4 3.6-31.8s-3.6-4.8-7.2-8.4z"/>
+    </svg>
+</a>
     <script src="script.js"></script>
 </body>
 </html>
