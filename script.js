@@ -1,57 +1,77 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu responsivo
+    
+    // --- LÓGICA PARA O MENU RESPONSIVO ---
     const navToggle = document.querySelector('.nav-toggle');
-    const mainNavUl = document.querySelector('.main-nav ul');
+    const mainNav = document.querySelector('.main-nav');
 
-    if (navToggle && mainNavUl) {
+    if (navToggle && mainNav) {
+        // Abre e fecha o menu ao clicar no botão hambúrguer
         navToggle.addEventListener('click', function() {
-            mainNavUl.classList.toggle('active');
+            mainNav.classList.toggle('active');
         });
 
-        const navLinks = document.querySelectorAll('.main-nav ul li a');
+        // Fecha o menu ao clicar em um dos links (útil para one-page sites)
+        const navLinks = document.querySelectorAll('.main-nav a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (mainNavUl.classList.contains('active')) {
-                    mainNavUl.classList.remove('active');
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
                 }
             });
         });
     }
 
-    // Carrossel
+    // --- LÓGICA PARA O CARROSSEL ---
     const prevButton = document.querySelector('.carousel-control.prev');
     const nextButton = document.querySelector('.carousel-control.next');
     const items = document.querySelectorAll('.carousel-item');
     let currentItem = 0;
+    let autoSlideInterval;
 
     function showItem(index) {
-        items.forEach((item, i) => {
-            item.classList.remove('active');
-            if (i === index) {
-                item.classList.add('active');
-            }
-        });
+        // Esconde todos os itens
+        items.forEach(item => item.classList.remove('active'));
+        
+        // Garante que o índice seja cíclico
+        currentItem = (index + items.length) % items.length;
+        
+        // Mostra o item correto
+        items[currentItem].classList.add('active');
     }
 
-    if (prevButton && nextButton && items.length > 0) {
+    function startAutoSlide() {
+        // Troca de slide a cada 5 segundos
+        autoSlideInterval = setInterval(() => {
+            showItem(currentItem + 1);
+        }, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    if (items.length > 1) {
         prevButton.addEventListener('click', () => {
-            currentItem = (currentItem - 1 + items.length) % items.length;
-            showItem(currentItem);
+            stopAutoSlide();
+            showItem(currentItem - 1);
+            startAutoSlide();
         });
 
         nextButton.addEventListener('click', () => {
-            currentItem = (currentItem + 1) % items.length;
-            showItem(currentItem);
+            stopAutoSlide();
+            showItem(currentItem + 1);
+            startAutoSlide();
         });
-
-        // Troca automática de slides a cada 5 segundos
-        setInterval(() => {
-            currentItem = (currentItem + 1) % items.length;
-            showItem(currentItem);
-        }, 5000);
-
-        showItem(currentItem); // Mostra o primeiro item ao carregar
+        
+        // Inicia a troca automática
+        startAutoSlide();
+        showItem(0); // Mostra o primeiro item ao carregar
+    } else if (items.length === 1) {
+        // Se houver apenas uma imagem, esconde os botões
+        prevButton.style.display = 'none';
+        nextButton.style.display = 'none';
+        showItem(0);
     }
 });

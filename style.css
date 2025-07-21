@@ -1,6 +1,19 @@
 /* style.css */
 
-/* Reset Básico */
+/* 1. VARIÁVEIS E RESET GERAL */
+:root {
+    --cor-primaria: #087E8B; /* Um tom de azul/verde mais moderno */
+    --cor-secundaria: #FFC107; /* Amarelo para destaque */
+    --cor-fundo: #FFFFFF;
+    --cor-fundo-claro: #f7f9fa;
+    --cor-texto: #333333;
+    --cor-cabecalho: #FFFFFF;
+    --fonte-titulo: 'Montserrat', sans-serif;
+    --fonte-corpo: 'Open Sans', sans-serif;
+    --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --raio-borda: 8px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,16 +25,16 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    font-family: var(--fonte-corpo);
+    line-height: 1.7;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
 }
 
 .container {
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 img {
@@ -30,14 +43,12 @@ img {
     display: block;
 }
 
-/* --- ESTILOS PARA DESKTOP (PADRÃO) --- */
-
-/* Header e Navegação */
+/* 2. CABEÇALHO E NAVEGAÇÃO (MOBILE-FIRST) */
 header {
-    background-color: #0a4d68;
-    color: #fff;
+    background-color: var(--cor-primaria);
+    color: var(--cor-cabecalho);
     padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -53,145 +64,150 @@ header .container {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #fff;
+    color: var(--cor-cabecalho);
 }
 
 .logo-img {
-    height: 50px;
-    margin-right: 15px;
+    height: 45px;
+    margin-right: 10px;
 }
 
 .logo-text {
-    font-size: 1.5em;
-    font-weight: bold;
+    font-family: var(--fonte-titulo);
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.nav-toggle {
+    display: block; /* Visível no mobile */
+    background: none;
+    border: none;
+    color: var(--cor-cabecalho);
+    font-size: 1.8em;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.main-nav {
+    display: none; /* Escondido por padrão no mobile */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: var(--cor-primaria);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-nav.active {
+    display: block;
+    transform: translateX(0);
 }
 
 .main-nav ul {
     list-style: none;
-    display: flex;
-}
-
-.main-nav ul li {
-    margin-left: 30px;
+    margin-top: 80px;
+    padding: 0 20px;
 }
 
 .main-nav ul li a {
-    color: #fff;
+    color: var(--cor-cabecalho);
     text-decoration: none;
-    font-weight: bold;
-    padding: 5px 0;
+    font-weight: 600;
+    display: block;
+    padding: 15px 0;
+    font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
 .main-nav ul li a:hover {
-    color: #ffd700;
+    color: var(--cor-secundaria);
 }
 
-.nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 2em;
-    cursor: pointer;
-}
-
-/* Carrossel */
+/* 3. HERO SECTION E CARROSSEL */
 .hero {
-    padding: 0;
     position: relative;
-    height: 500px; /* Você pode ajustar a altura do carrossel aqui */
+    height: 60vh;
+    max-height: 500px;
     overflow: hidden;
-    background-color: #e0e0e0; /* Cor de fundo enquanto as imagens carregam */
+    background-color: #e0e0e0;
 }
 
-.carousel-container {
+.carousel-container, .carousel-slide, .carousel-item {
     height: 100%;
     width: 100%;
 }
 
 .carousel-slide {
     display: flex;
-    height: 100%;
     transition: transform 0.5s ease-in-out;
 }
 
 .carousel-item {
     min-width: 100%;
-    height: 100%;
+    position: relative;
     display: none;
-    background-size: cover;
-    background-position: center;
 }
-
-.carousel-item.active {
-    display: block; /* Alterado de flex para block */
-}
+.carousel-item.active { display: block; }
 
 .carousel-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* ESSENCIAL: Garante que a imagem cubra o espaço sem distorcer */
-    display: block;
+    object-fit: cover;
 }
 
 .carousel-control {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
     border: none;
     font-size: 2rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
     z-index: 100;
-    border-radius: 5px;
+    border-radius: var(--raio-borda);
+    transition: background-color 0.3s;
 }
+.carousel-control:hover { background-color: rgba(0, 0, 0, 0.7); }
+.carousel-control.prev { left: 15px; }
+.carousel-control.next { right: 15px; }
 
-.carousel-control.prev {
-    left: 15px;
-}
-
-.carousel-control.next {
-    right: 15px;
-}
-
-/* Seções de Conteúdo */
+/* 4. SEÇÕES DE CONTEÚDO */
 .section-padding {
     padding: 60px 0;
 }
+.bg-light { background-color: var(--cor-fundo-claro); }
 
-.section-padding:nth-of-type(odd) {
-    background-color: #fff;
-}
-
-.section-padding h2 {
+h2 {
+    font-family: var(--fonte-titulo);
     text-align: center;
-    font-size: 2.5em;
+    font-size: 2em;
     margin-bottom: 40px;
-    color: #0a4d68;
+    color: var(--cor-primaria);
 }
 
-/* Eventos */
+/* 5. EVENTOS */
 .eventos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 30px;
 }
 
 .evento-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: var(--cor-fundo);
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-padrao);
     overflow: hidden;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .evento-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 .evento-card img {
@@ -200,192 +216,146 @@ header .container {
     object-fit: cover;
 }
 
-.evento-card h3 {
-    font-size: 1.5em;
-    color: #0a4d68;
-    margin: 20px 20px 10px;
+.card-content { padding: 25px; }
+.card-content h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.4em;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
 }
-
-.evento-card .evento-data {
-    font-weight: bold;
+.evento-data {
+    font-weight: 600;
     color: #555;
-    margin: 0 20px 10px;
+    margin-bottom: 15px;
 }
 
-.evento-card p {
-    margin: 0 20px 20px;
-}
-
-
-/* Botões */
+/* 6. BOTÕES E FORMULÁRIO */
 .btn {
     display: inline-block;
-    background-color: #ffd700;
-    color: #0a4d68;
-    padding: 12px 25px;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    padding: 12px 30px;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    border-radius: var(--raio-borda);
+    font-weight: 600;
+    font-family: var(--fonte-titulo);
+    transition: background-color 0.3s ease, transform 0.2s ease;
     border: none;
+    cursor: pointer;
+    text-align: center;
 }
-
 .btn:hover {
-    background-color: #ffc107;
+    background-color: #ffca2c;
+    transform: translateY(-2px);
 }
 
-/* Mapa */
-.map-container {
-    margin: 30px auto;
-    max-width: 800px;
-    height: 450px;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-/* Formulário de Contato */
 .contact-form {
     max-width: 600px;
     margin: 0 auto 30px auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    text-align: left;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form label { font-weight: 600; }
+.contact-form input, .contact-form textarea {
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: var(--raio-borda);
     font-size: 1em;
     width: 100%;
+    font-family: var(--fonte-corpo);
 }
-
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus {
     outline: none;
-    border-color: #0a4d68;
-    box-shadow: 0 0 0 2px rgba(10, 77, 104, 0.2);
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(8, 126, 139, 0.2);
 }
 
-/* Links Sociais */
-.social-links {
+/* 7. MAPA E CONTATO ADICIONAL */
+.map-container {
+    margin: 30px auto;
+    max-width: 800px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-padrao);
+}
+.map-container iframe { width: 100%; height: 100%; }
+
+.contact-info {
     text-align: center;
+    margin-top: 40px;
 }
 .social-links a {
-    display: inline-block;
-    margin: 0 10px;
-    color: #0a4d68;
-    font-size: 1.2em;
+    color: var(--cor-primaria);
+    font-weight: 600;
     text-decoration: none;
-    transition: color 0.3s ease;
+    margin: 0 8px;
+    transition: color 0.3s;
 }
+.social-links a:hover { color: var(--cor-secundaria); }
 
-.social-links a:hover {
-    color: #ffd700;
-}
-
-/* Ícone Flutuante do WhatsApp */
+/* 8. WHATSAPP E FOOTER */
 .whatsapp-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 30px;
-    background-color: #25D366; /* Cor oficial do WhatsApp */
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
     border-radius: 50%;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1001; /* Garante que fique acima de outros elementos */
-    transition: transform 0.2s ease-in-out;
+    z-index: 1001;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: pulse 2s infinite;
+    transition: transform 0.2s;
 }
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-icon { width: 30px; height: 30px; fill: #FFFFFF; }
 
-.whatsapp-float:hover {
-    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
-}
-
-.whatsapp-icon {
-    width: 32px;
-    height: 32px;
-    fill: #FFFFFF; /* Cor do ícone (branco) */
-}
-
-
-/* Footer */
 footer {
     background-color: #222;
-    color: #fff;
+    color: #ccc;
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 0;
     font-size: 0.9em;
 }
 
-/* --- MEDIA QUERIES PARA MOBILE --- */
-
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
-
-    .logo-text {
-        font-size: 1.2em;
-    }
-
+/* 9. MEDIA QUERIES PARA DESKTOP (A PARTIR DE 768px) */
+@media (min-width: 768px) {
+    .logo-text { font-size: 1.2rem; }
+    
+    .nav-toggle { display: none; }
+    
     .main-nav {
-        order: 3;
-        width: 100%;
-    }
-
-    .main-nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(10, 77, 104, 0.95);
-        position: absolute;
-        top: 80px; /* Altura do header */
-        left: 0;
-        padding: 10px 0;
-    }
-
-    .main-nav ul.active {
-        display: flex;
-    }
-
-    .main-nav ul li {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    .nav-toggle {
         display: block;
-        position: absolute;
-        top: 25px;
-        right: 20px;
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        transform: none;
+        transition: none;
     }
-}
+    
+    .main-nav ul {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .main-nav ul li { margin-left: 35px; }
+    .main-nav ul li a { padding: 5px 0; }
+    
+    .hero { height: 70vh; max-height: 600px; }
+    
+    h2 { font-size: 2.5em; }
 
-/* Animação Pulsante para o WhatsApp */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-    }
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    .eventos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 }
