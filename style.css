@@ -52,12 +52,12 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-        transition: padding 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transição suave */
+    transition: padding 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 header.scrolled {
     padding: 10px 0;
-    background-color: rgba(8, 126, 139, 0.95); /* Azul com leve transparência */
+    background-color: rgba(8, 126, 139, 0.95);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -86,7 +86,7 @@ header .container {
 }
 
 .nav-toggle {
-    display: block;
+    display: block; /* Garante que o ícone do menu seja visível no mobile */
     background: none;
     border: none;
     cursor: pointer;
@@ -109,7 +109,6 @@ header .container {
 .line-2 { top: 50%; transform: translateY(-50%); }
 .line-3 { bottom: 0; }
 
-/* Animação do ícone para "X" */
 .nav-toggle.active .line-1 {
     transform: translateY(9.5px) rotate(45deg);
 }
@@ -120,9 +119,8 @@ header .container {
     transform: translateY(-9.5px) rotate(-45deg);
 }
 
-
 .main-nav {
-    display: none; /* Escondido por padrão no mobile */
+    display: none; /* Esconde a lista de links por padrão no mobile */
     position: absolute;
     top: 0;
     right: 0;
@@ -192,7 +190,7 @@ header .container {
 }
 
 .carousel-control {
-    display: none; /* ESCONDE OS BOTÕES EM TODAS AS RESOLUÇÕES */
+    display: none;
 }
 
 /* 4. SEÇÕES DE CONTEÚDO */
@@ -224,15 +222,30 @@ h2 {
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.evento-card.js-evento-card {
+    cursor: pointer;
+}
+
 .evento-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
+.evento-img-container {
+    height: 200px;
+    overflow: hidden;
+}
+
 .evento-card img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.evento-card:hover img {
+    transform: scale(1.1);
 }
 
 .card-content { padding: 25px; }
@@ -246,6 +259,53 @@ h2 {
     font-weight: 600;
     color: #555;
     margin-bottom: 15px;
+}
+
+/* ESTILOS PARA A SEÇÃO DE HORÁRIOS */
+.horarios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.horario-card {
+    background: var(--cor-fundo-claro);
+    padding: 25px;
+    border-radius: var(--raio-borda);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.horario-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-padrao);
+}
+
+.horario-card h3 {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-primaria);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.dia-semana {
+    font-size: 1.1em;
+    color: var(--cor-texto);
+}
+
+.horario {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--cor-secundaria);
+}
+
+/* Ajuste para telas maiores */
+@media (min-width: 768px) {
+    .horarios-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* 6. BOTÕES E FORMULÁRIO */
@@ -316,14 +376,14 @@ h2 {
 }
 .social-links a:hover { color: var(--cor-secundaria); }
 
-/* 8. SEÇÃO VERSÍCULO DO DIA (ADICIONADO ANTERIORMENTE) */
+/* 8. SEÇÃO VERSÍCULO */
 #versiculo {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(kaykyds/landing-ipjd/landing-ipjd-b976c65725ece60031dc18ea26e9080c9c36f6c9/img/passagem_biblia.jpg) no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/passagem_biblia.jpg) no-repeat center center;
     background-size: cover;
-    background-attachment: fixed; /* Cria o efeito de paralaxe */
+    background-attachment: fixed;
     color: #FFFFFF;
     text-align: center;
-    padding: 100px 0; /* Mais preenchimento para dar destaque */
+    padding: 100px 0;
 }
 
 .versiculo-texto {
@@ -332,7 +392,7 @@ h2 {
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 20px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para legibilidade */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .versiculo-referencia {
@@ -341,7 +401,7 @@ h2 {
     opacity: 0.9;
 }
 
-/* 11. SEÇÃO DE VÍDEOS COM CARDS */
+/* 9. SEÇÃO DE VÍDEOS */
 .videos-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -366,7 +426,7 @@ h2 {
 .video-card img {
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9; /* Garante a proporção do vídeo */
+    aspect-ratio: 16 / 9;
     object-fit: cover;
 }
 
@@ -381,7 +441,7 @@ h2 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%); /* Ajuste para centralizar melhor com o título abaixo */
+    transform: translate(-50%, -60%);
     width: 60px;
     height: 60px;
     background-color: rgba(255, 193, 7, 0.8);
@@ -398,10 +458,9 @@ h2 {
     background-color: var(--cor-secundaria);
 }
 
-
-/* 12. ESTILOS DO MODAL DE VÍDEO */
+/* 10. MODAIS (VÍDEO E EVENTO) */
 .modal {
-    display: none; /* Escondido por padrão */
+    display: none;
     position: fixed;
     z-index: 2000;
     left: 0;
@@ -443,7 +502,7 @@ h2 {
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
 }
@@ -456,15 +515,50 @@ h2 {
     height: 100%;
 }
 
-/* Deixa a grid de vídeos com até 3 colunas em telas maiores */
-@media (min-width: 768px) {
-    .videos-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    }
+/* Estilos específicos do Modal de Evento */
+.event-modal-content {
+    background-color: #fff;
+    border-radius: var(--raio-borda);
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 0;
+    text-align: left;
+}
+
+.event-close-modal {
+    top: 10px;
+    right: 20px;
+    color: #333;
+}
+
+#event-modal-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: var(--raio-borda);
+    border-top-right-radius: var(--raio-borda);
+}
+
+#event-modal-text {
+    padding: 25px;
+}
+
+#event-modal-title {
+    font-family: var(--fonte-titulo);
+    font-size: 1.8em;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+
+#event-modal-date {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 15px;
 }
 
 
-/* 9. WHATSAPP E FOOTER */
+/* 11. WHATSAPP E FOOTER */
 .whatsapp-float {
     position: fixed;
     width: 55px;
@@ -491,14 +585,12 @@ footer {
     font-size: 0.9em;
 }
 
-/* ---------------------------------- */
-/* ANIMAÇÕES                          */
-/* ---------------------------------- */
+/* 12. ANIMAÇÕES */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: 0.2s; /* Pequeno atraso para um efeito mais escalonado */
+    transition-delay: 0.2s;
 }
 
 p.animate-on-scroll.is-visible{
@@ -510,14 +602,16 @@ p.animate-on-scroll.is-visible{
     transform: translateY(0);
 }
 
-/* 10. MEDIA QUERIES PARA DESKTOP (A PARTIR DE 768px) */
+/* 13. MEDIA QUERIES (Desktop) */
 @media (min-width: 768px) {
     .logo-text { font-size: 1.2rem; }
     
-    .nav-toggle { display: none; }
+    .nav-toggle { 
+        display: none; /* Esconde o ícone no desktop */
+    }
     
     .main-nav {
-        display: block;
+        display: block; /* Mostra a navegação completa no desktop */
         position: static;
         width: auto;
         height: auto;
@@ -541,9 +635,7 @@ p.animate-on-scroll.is-visible{
     
     h2 { font-size: 2.5em; }
 
-    .eventos-grid {
+    .eventos-grid, .videos-grid {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
-
-    /* A regra para esconder os botões foi movida para fora da media query */
 }

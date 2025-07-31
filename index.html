@@ -53,28 +53,57 @@
             </div>
        </section>
 
+       <section id="horarios" class="section-padding">
+            <div class="container">
+                <h2 class="animate-on-scroll">Nossos Cultos</h2>
+                <div class="horarios-grid animate-on-scroll">
+                    <div class="horario-card">
+                        <h3>Culto de Doutrina</h3>
+                        <p class="dia-semana">Terça-feira</p>
+                        <p class="horario">às 20:00</p>
+                    </div>
+                    <div class="horario-card">
+                        <h3>Culto de Libertação</h3>
+                        <p class="dia-semana">Quinta-feira</p>
+                        <p class="horario">às 20:00</p>
+                    </div>
+                    <div class="horario-card">
+                        <h3>Culto de Louvor e Adoração</h3>
+                        <p class="dia-semana">Sábado</p>
+                        <p class="horario">às 19:15</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="eventos" class="section-padding">
             <div class="container">
                 <h2 class="animate-on-scroll">Próximos Eventos</h2>
                 <div class="eventos-grid">
-                    <div class="evento-card animate-on-scroll">
-                        <img src="img/aniversario.png" alt="Imagem do Evento 1">
+                    <div class="evento-card animate-on-scroll js-evento-card">
+                        <div class="evento-img-container">
+                            <img src="img/aniversario.png" alt="Imagem do Evento 1">
+                        </div>
                         <div class="card-content">
                             <h3>Aniversário da Igreja</h3>
                             <p class="evento-data">25 de Julho de 2025, às 22:00</p>
                             <p>Uma noite inteira de clamor e adoração. Venha buscar a face do Senhor conosco.</p>
                         </div>
                     </div>
-                    <div class="evento-card animate-on-scroll">
-                        <img src="img/batismo.png" alt="Imagem do Evento 2">
+                    <div class="evento-card animate-on-scroll js-evento-card">
+                         <div class="evento-img-container">
+                            <img src="img/batismo.png" alt="Imagem do Evento 2">
+                        </div>
                         <div class="card-content">
                             <h3>Batismo</h3>
                             <p class="evento-data">17 de Agosto de 2025, às 18:00</p>
                             <p>Celebraremos com louvores e um delicioso jantar em gratidão a Deus por mais um ano de bênçãos.</p>
                         </div>
                     </div>
-                    <div class="evento-card animate-on-scroll">
-                        <img src="img/cultojovens.png" alt="Imagem do Evento 3">
+                    <div class="evento-card animate-on-scroll js-evento-card">
+                        <div class="evento-img-container">
+                            <img src="img/cultojovens.png" alt="Imagem do Evento 3">
+                        </div>
                         <div class="card-content">
                             <h3>Congresso de Jovens</h3>
                             <p class="evento-data">12 a 14 de Setembro de 2025</p>
@@ -102,30 +131,22 @@
                 <div class="videos-grid animate-on-scroll">
                     <div class="video-card" data-video-id="5xp7EQ3r67U">
                         <img src="https://img.youtube.com/vi/5xp7EQ3r67U/hqdefault.jpg" alt="Thumbnail do Vídeo 1">
-                        <div class="play-icon">&#9658;</div>
+                        <div class="play-icon">►</div>
                         <h3>Aniversário de 43 do ministério</h3>
                     </div>
                     <div class="video-card" data-video-id="jChuUMSluoE">
                         <img src="https://img.youtube.com/vi/jChuUMSluoE/hqdefault.jpg" alt="Thumbnail do Vídeo 2">
-                        <div class="play-icon">&#9658;</div>
+                        <div class="play-icon">►</div>
                         <h3>Culto Especial de Jovens - O Chamado</h3>
                     </div>
                     <div class="video-card" data-video-id="oVXYgQOpOvw">
                         <img src="https://img.youtube.com/vi/oVXYgQOpOvw/hqdefault.jpg" alt="Thumbnail do Vídeo 3">
-                        <div class="play-icon">&#9658;</div>
+                        <div class="play-icon">►</div>
                         <h3>Unção do Sangue do Cordeiro 2025</h3>
                     </div>
                 </div>
             </div>
         </section>
-        <div id="video-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <div class="video-container">
-                    <iframe id="video-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
 
         <section id="localizacao" class="section-padding bg-light">
             <div class="container">
@@ -154,15 +175,36 @@
                 </form>
                 <div class="contact-info animate-on-scroll">
                     <p>Ou se preferir, entre em contato:</p>
-                    <p><strong>Telefone:</strong> (11) 98765-4321</p>
+                    <p><strong>Telefone:</strong> (11) 98187-4751</p>
                     <div class="social-links">
-                        <a href="#" target="_blank">Facebook</a> | 
-                        <a href="#" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/JardimdeDeusBonsucesso/?locale=pt_BR" target="_blank">Facebook</a> | 
+                        <a href="https://www.instagram.com/ipjd_bonsucesso/" target="_blank">Instagram</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="video-container">
+                <iframe id="video-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-modal" class="modal">
+        <div class="modal-content event-modal-content">
+            <span class="close-modal event-close-modal">×</span>
+            <img id="event-modal-img" src="" alt="Imagem do Evento">
+            <div id="event-modal-text">
+                <h3 id="event-modal-title"></h3>
+                <p id="event-modal-date"></p>
+                <p id="event-modal-description"></p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="container">

@@ -7,11 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
 
-    // Animação do ícone do menu
     if (navToggle && mainNav) {
         navToggle.addEventListener('click', function() {
             mainNav.classList.toggle('active');
-            navToggle.classList.toggle('active'); // Adiciona/remove classe do botão
+            navToggle.classList.toggle('active');
         });
 
         const navLinks = document.querySelectorAll('.main-nav a');
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, {
-        threshold: 0.1 // Ativa quando 10% do elemento está visível
+        threshold: 0.1
     });
 
     const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
@@ -51,79 +50,114 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- LÓGICA PARA O CARROSSEL ---
     const carouselContainer = document.querySelector('.carousel-container');
-    if (!carouselContainer) return; 
+    if (carouselContainer) {
+        const items = carouselContainer.querySelectorAll('.carousel-item');
+        let currentItem = 0;
+        let autoSlideInterval;
 
-    const items = carouselContainer.querySelectorAll('.carousel-item');
-    let currentItem = 0;
-    let autoSlideInterval;
+        if (items.length > 1) {
+            function showItem(index) {
+                currentItem = (index + items.length) % items.length;
+                items.forEach(item => item.classList.remove('active'));
+                items[currentItem].classList.add('active');
+            }
 
-    if (items.length <= 1) {
-        if (items.length === 1) items[0].classList.add('active');
-        return;
-    }
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = setInterval(() => {
+                    showItem(currentItem + 1);
+                }, 5000);
+            }
 
-    function showItem(index) {
-        currentItem = (index + items.length) % items.length;
-        items.forEach(item => item.classList.remove('active'));
-        items[currentItem].classList.add('active');
-    }
+            let touchStartX = 0;
+            carouselContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                clearInterval(autoSlideInterval);
+            }, { passive: true });
 
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(() => {
-            showItem(currentItem + 1);
-        }, 5000);
-    }
-
-    let touchStartX = 0;
-    carouselContainer.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        clearInterval(autoSlideInterval);
-    }, { passive: true });
-
-    carouselContainer.addEventListener('touchend', (e) => {
-        const touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 50) { 
-            showItem(currentItem + 1);
-        } else if (touchEndX - touchStartX > 50) {
-            showItem(currentItem - 1);
+            carouselContainer.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                if (touchStartX - touchEndX > 50) { 
+                    showItem(currentItem + 1);
+                } else if (touchEndX - touchStartX > 50) {
+                    showItem(currentItem - 1);
+                }
+                resetAutoSlide();
+            });
+            
+            showItem(0);
+            resetAutoSlide();
+        } else if (items.length === 1) {
+            items[0].classList.add('active');
         }
-        resetAutoSlide();
-    });
+    }
     
-    showItem(0);
-    resetAutoSlide();
-
-    
-
-// --- LÓGICA PARA O MODAL DE VÍDEO ---
+    // --- LÓGICA PARA O MODAL DE VÍDEO ---
     const videoCards = document.querySelectorAll('.video-card');
-    const modal = document.getElementById('video-modal');
-    const iframe = document.getElementById('video-iframe');
-    const closeModalBtn = document.querySelector('.close-modal');
+    const videoModal = document.getElementById('video-modal');
 
-    if (modal) { // Verifica se os elementos do modal existem
+    if (videoModal) {
+        const iframe = document.getElementById('video-iframe');
+        const closeModalBtn = videoModal.querySelector('.close-modal');
+
         videoCards.forEach(card => {
             card.addEventListener('click', () => {
                 const videoId = card.getAttribute('data-video-id');
-                // Adiciona autoplay e outros parâmetros para uma melhor experiência
                 iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-                modal.classList.add('active');
+                videoModal.classList.add('active');
             });
         });
 
         const closeModal = () => {
-            modal.classList.remove('active');
-            // Para o vídeo quando o modal é fechado
+            videoModal.classList.remove('active');
             iframe.src = ''; 
         }
 
         closeModalBtn.addEventListener('click', closeModal);
 
-        // Fecha o modal se o usuário clicar fora do vídeo
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
                 closeModal();
+            }
+        });
+    }
+
+    // --- LÓGICA PARA O MODAL DE EVENTOS ---
+    const eventCards = document.querySelectorAll('.js-evento-card');
+    const eventModal = document.getElementById('event-modal');
+    
+    if (eventModal) {
+        const eventModalImg = document.getElementById('event-modal-img');
+        const eventModalTitle = document.getElementById('event-modal-title');
+        const eventModalDate = document.getElementById('event-modal-date');
+        const eventModalDescription = document.getElementById('event-modal-description');
+        const closeEventModalBtn = eventModal.querySelector('.close-modal');
+
+        eventCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img').src;
+                const title = card.querySelector('h3').textContent;
+                const date = card.querySelector('.evento-data').textContent;
+                const description = card.querySelector('p:last-of-type').textContent;
+
+                eventModalImg.src = img;
+                eventModalTitle.textContent = title;
+                eventModalDate.textContent = date;
+                eventModalDescription.textContent = description;
+
+                eventModal.classList.add('active');
+            });
+        });
+
+        const closeEventModal = () => {
+            eventModal.classList.remove('active');
+        }
+
+        closeEventModalBtn.addEventListener('click', closeEventModal);
+
+        eventModal.addEventListener('click', (e) => {
+            if (e.target === eventModal) {
+                closeEventModal();
             }
         });
     }
