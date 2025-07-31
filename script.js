@@ -93,4 +93,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     showItem(0);
     resetAutoSlide();
+
+    
+
+// --- LÓGICA PARA O MODAL DE VÍDEO ---
+    const videoCards = document.querySelectorAll('.video-card');
+    const modal = document.getElementById('video-modal');
+    const iframe = document.getElementById('video-iframe');
+    const closeModalBtn = document.querySelector('.close-modal');
+
+    if (modal) { // Verifica se os elementos do modal existem
+        videoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const videoId = card.getAttribute('data-video-id');
+                // Adiciona autoplay e outros parâmetros para uma melhor experiência
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                modal.classList.add('active');
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            // Para o vídeo quando o modal é fechado
+            iframe.src = ''; 
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Fecha o modal se o usuário clicar fora do vídeo
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
 });
